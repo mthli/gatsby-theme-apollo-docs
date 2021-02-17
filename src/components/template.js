@@ -168,7 +168,8 @@ export default function Template(props) {
     .filter(page => !page.anchor);
 
   const { ogImage = {} } = frontmatter;
-  const imagePath = ogImage.relativePath || fields.image;
+  let imagePath = ogImage.publicURL || fields.image || '';
+  if (imagePath.startsWith('/')) imagePath = imagePath.substring(1);
 
   return (
     <Fragment>
@@ -240,7 +241,7 @@ export const pageQuery = graphql`
           title
           description
           ogImage {
-            relativePath
+            publicURL
           }
         }
         headings {
@@ -258,7 +259,7 @@ export const pageQuery = graphql`
           title
           description
           ogImage {
-            relativePath
+            publicURL
           }
         }
         headings {
