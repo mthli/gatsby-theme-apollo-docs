@@ -115,6 +115,8 @@ module.exports = ({
   ];
 
   const plugins = [
+    'gatsby-plugin-sharp',
+    'gatsby-remark-images',
     'gatsby-theme-apollo-core',
     {
       resolve: 'gatsby-source-filesystem',
