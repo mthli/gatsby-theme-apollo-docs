@@ -174,7 +174,7 @@ export default function Template(props) {
         description={frontmatter.description || description}
         siteName={title}
         baseUrl={baseUrl}
-        image={frontmatter.ogimage || fields.image}
+        image={frontmatter.ogImage || fields.image}
         twitterHandle={twitterHandle}
       />
       <StyledContentWrapper>
@@ -229,7 +229,6 @@ export const pageQuery = graphql`
       siteMetadata {
         title
         description
-        ogimage
       }
     }
     file(id: {eq: $id}) {
@@ -237,7 +236,7 @@ export const pageQuery = graphql`
         frontmatter {
           title
           description
-          ogimage
+          ogImage
         }
         headings {
           value
@@ -253,7 +252,7 @@ export const pageQuery = graphql`
         frontmatter {
           title
           description
-          ogimage
+          ogImage
         }
         headings {
           value
