@@ -122,8 +122,6 @@ module.exports = ({
       resolve: 'gatsby-source-filesystem',
       options: {
         path: path.join(root, contentDir),
-        name: 'docs',
-        ignore
       }
     },
     {
