@@ -167,6 +167,9 @@ export default function Template(props) {
     .reduce((acc, {pages}) => acc.concat(pages), [])
     .filter(page => !page.anchor);
 
+  const { ogImage = {} } = frontmatter;
+  const imagePath = ogImage.relativePath || fields.image;
+
   return (
     <Fragment>
       <CustomSEO
@@ -174,7 +177,7 @@ export default function Template(props) {
         description={frontmatter.description || description}
         siteName={title}
         baseUrl={baseUrl}
-        image={frontmatter.ogImage || fields.image}
+        image={imagePath}
         twitterHandle={twitterHandle}
       />
       <StyledContentWrapper>
@@ -236,7 +239,9 @@ export const pageQuery = graphql`
         frontmatter {
           title
           description
-          ogImage
+          ogImage {
+            relativePath
+          }
         }
         headings {
           value
@@ -252,7 +257,9 @@ export const pageQuery = graphql`
         frontmatter {
           title
           description
-          ogImage
+          ogImage {
+            relativePath
+          }
         }
         headings {
           value
